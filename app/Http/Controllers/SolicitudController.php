@@ -37,6 +37,17 @@ class SolicitudController extends BaseController
         ], 200);
     }
 
+    public function show(int $solicitud)
+    {
+        $solicitud = Solicitud::findOrFail($solicitud);
+
+        if (!$solicitud) {
+            $this->sendError('No existen datos', [], 404);
+        }
+
+        return response()->json($solicitud, 200);
+    }
+
     public function destroy(Solicitud $post)
     {
         $post->delete();
