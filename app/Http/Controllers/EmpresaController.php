@@ -25,7 +25,11 @@ class EmpresaController extends BaseController
     {
         $empresa = Empresa::create($request->all());
 
-        return $this->sendResponse($empresa, 'Se creó correctamente la solicitud.');
+        if (!$empresa) {
+            return response()->json($empresa, 404);
+        } else {
+            return response()->json($empresa, 200);
+        }
     }
 
     public function update(StoreEmpresaRequest $request, int $id)
@@ -33,9 +37,9 @@ class EmpresaController extends BaseController
         $empresa = Empresa::find($id);
         $empresa->update($request->all());
         if (!$empresa) {
-            return $this->sendError('No existen datos', [], 404);
+            return response()->json($empresa, 404);
         } else {
-            return $this->sendResponse($empresa, 'Se editó correctamente la solicitud.');
+            return response()->json($empresa, 200);
         }
     }
 
@@ -44,10 +48,10 @@ class EmpresaController extends BaseController
         $empresa = Empresa::findOrFail($id);
 
         if (!$empresa) {
-            $this->sendError('No existen datos', [], 404);
+            return response()->json($empresa, 404);
+        } else {
+            return response()->json($empresa, 200);
         }
-
-        return response()->json($empresa, 200);
     }
 
     public function destroy(Empresa $empresa)
@@ -55,9 +59,9 @@ class EmpresaController extends BaseController
         $estado = $empresa->delete();
 
         if (!$estado) {
-            return $this->sendError('No se eliminó correctamente', [], 404);
+            return response()->json($estado, 404);
         } else {
-            return $this->sendResponse($empresa, 'Se eliminó correctamente la empresa.');
+            return response()->json($estado, 200);
         }
     }
 }
