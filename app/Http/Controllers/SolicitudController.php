@@ -26,15 +26,15 @@ class SolicitudController extends BaseController
         return $this->sendResponse($solicitud, 'Se creó correctamente la solicitud.');
     }
 
-    public function update(StoreSolicitudRequest $request, Solicitud $post)
+    public function update(StoreSolicitudRequest $request, int $id)
     {
-        $post->update($request->all());
-
-        return response()->json([
-            'status' => true,
-            'message' => "Post Updated successfully!",
-            'post' => $post
-        ], 200);
+        $solicitud=Solicitud::find($id);
+        $solicitud->update($request->all());
+        if (!$solicitud) {
+            return $this->sendError('No existen datos', [], 404);
+        } else {
+            return $this->sendResponse($solicitud, 'Se editó correctamente la solicitud.');
+        }
     }
 
     public function show(int $solicitud)

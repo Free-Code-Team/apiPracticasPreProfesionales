@@ -17,7 +17,7 @@ class SolicitudFactory extends Factory
     {
         return [
             'representante' => $this->faker->name,
-            'estado' => $this->faker->randomElement(['0', '1'])
+            'estado' => $this->faker->randomElement(['0', '1', '2', '3'])
         ];
     }
 }

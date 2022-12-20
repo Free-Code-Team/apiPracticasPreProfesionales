@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $personas = \App\Models\Persona::factory(5)->create();
+/*         $personas = \App\Models\Persona::factory(5)->create();
         $empresas = \App\Models\Empresa::factory(5)->create();
 
         foreach ($personas as $persona) {
@@ -50,5 +50,33 @@ class DatabaseSeeder extends Seeder
             'idEmpresa' => 2,
             'idEstudiante' => 2
         ]);
+        \App\Models\Solicitud::factory(1)->create([
+            'idEmpresa' => 2,
+            'idEstudiante' => 2
+        ]);
+        \App\Models\Solicitud::factory(1)->create([
+            'idEmpresa' => 2,
+            'idEstudiante' => 2
+        ]);
+        \App\Models\Solicitud::factory(1)->create([
+            'idEmpresa' => 2,
+            'idEstudiante' => 2
+        ]);
+        \App\Models\Solicitud::factory(1)->create([
+            'idEmpresa' => 2,
+            'idEstudiante' => 2
+        ]);
+        \App\Models\Solicitud::factory(1)->create([
+            'idEmpresa' => 2,
+            'idEstudiante' => 2
+        ]);
+        \App\Models\Solicitud::factory(1)->create([
+            'idEmpresa' => 2,
+            'idEstudiante' => 2
+        ]);
+        \App\Models\Solicitud::factory(1)->create([
+            'idEmpresa' => 2,
+            'idEstudiante' => 2
+        ]); */
     }
 }
