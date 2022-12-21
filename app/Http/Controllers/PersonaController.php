@@ -42,4 +42,17 @@ class PersonaController extends BaseController
         $persona = Persona::all()->where('uidUsuario', $idUsuario)->first();
         return response()->json($persona, 200);
     }
+
+    public function show(int $id)
+    {
+        $persona = Persona::findOrFail($id);
+
+        if (!$persona) {
+            $this->sendError('No existen datos', [], 404);
+        }
+
+        return response()->json($persona, 200);
+    }
 }
+
+

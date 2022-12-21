@@ -42,4 +42,15 @@ class EstudianteController extends BaseController
         $estudiante = Estudiante::all()->where('idPersona', $idPersona)->first();
         return response()->json($estudiante, 200);
     }
+
+    public function show(int $id)
+    {
+        $estudiante = Estudiante::findOrFail($id);
+
+        if (!$estudiante) {
+            $this->sendError('No existen datos', [], 404);
+        }
+
+        return response()->json($estudiante, 200);
+    }
 }
