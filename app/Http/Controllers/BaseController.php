@@ -6,9 +6,9 @@ class BaseController extends Controller
 {
     public function sendResponse($resultado, $mensaje)
     {
-    	$res = [
+        $res = [
             'estado' => 'correcto',
-            'data'    => $resultado,
+            'data' => $resultado,
             'mensaje' => $mensaje,
         ];
 
@@ -17,12 +17,12 @@ class BaseController extends Controller
 
     public function sendError($error, $errorMessages = [], $code = 404)
     {
-    	$res = [
+        $res = [
             'estado' => 'incorrecto',
             'mensaje' => $error,
         ];
 
-        if(!empty($errorMessages)){
+        if (!empty($errorMessages)) {
             $response['data'] = $errorMessages;
         }
 
